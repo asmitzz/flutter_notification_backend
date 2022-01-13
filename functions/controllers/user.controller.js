@@ -21,7 +21,9 @@ const signin = async(req,res) => {
   const { email,password } = req.body;
 
   const user = await Users.findOne({email});
-
+  if(!user){
+    return res.status(401).json({ message:"Email not registered"})
+  }
   // authenticate user
   if(!user.authenticate(password)){
       return res.status(401).json({ message:"Sorry, your password was incorrect. Please double-check your password"})
