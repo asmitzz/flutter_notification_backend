@@ -32,7 +32,7 @@ const createPost = async (req, res) => {
    
 
     try {
-      admin.initializeApp();
+       admin.initializeApp();
 
        await admin.messaging().sendToDevice(tokens, payload);
        return res.status(201).json({
